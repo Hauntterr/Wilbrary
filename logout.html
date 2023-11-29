@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="geral">
+        <h1>Tem certeza que deseja sair?</h1>
+        <button onclick="logout()">Sair</button>
+        <a href="dashboard.html">Não</a>
+    </div>
+</body>
+</html>
+
+<script>
+    function logout(){
+        // Define o valor de authenticated como false no localStorage
+        localStorage.setItem('authenticated', 'false');
+
+        //Redireciona para a página de login
+        window.location.href = 'login.html';
+    }
+</script>
+
+<script src="app.js"></script>
