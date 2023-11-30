@@ -9,8 +9,17 @@
     
     
     <style>
-      
-      </style>
+      .produto {
+          border: 1px solid #ccc;
+          margin: 10px;
+          padding: 10px;
+      }
+
+      .pimg {
+          max-width: 100%;
+          height: auto;
+      }
+  </style>
     
     
     
@@ -266,22 +275,21 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <!-- ***** Search End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="details.html">Sobre</a></li>
-                        <li><a href="streams.html" class="active">Livros</a></li>
-                        <li><a href="browse.html">Contato</a></li>
-                        
-                          <div class="dropdown">
-                            <button class="dropbtn">Perfil</button>
-                            <div class="dropdown-content">
-                              <a href="#">Favoritos</a>
-                              <a href="#">Carrinho</a>
-                              <a><hr></a>
-                              <a href="logout.html">Sair</a>
-                            </div>
-                          </div>
-                        
-                    </ul>      
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="details.html">Sobre</a></li>
+                      <li><a href="streams.html" class="active">Livros</a></li>
+                      <li><a href="browse.html">Contato</a></li>
+                      <li><a href="controle.html">Controle</a></li>
+                      <div class="dropdown">
+                        <button class="dropbtn">Perfil</button>
+                        <div class="dropdown-content">
+                          <a href="#">Favoritos</a>
+                          <a href="#">Carrinho</a>
+                          <a><hr></a>
+                          <a href="logout.html">Sair</a>
+                        </div>
+                      </div>
+                  </ul>      
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
@@ -313,7 +321,7 @@ https://templatemo.com/tm-579-cyborg-gaming
             <div class="col-lg-12">
               <div class="featured-games header-text">
                 <div class="heading-section">
-                  <h4><center><em>Mais</em> Procurados</center></h4>
+                  <h4><center>Livros</center></h4>
                 </div>
                 <div class="owl-features owl-carousel">
                   
@@ -330,33 +338,9 @@ https://templatemo.com/tm-579-cyborg-gaming
           
           
           
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
-                <!-- Wrapper for carousel items -->
-                <div class="carousel-inner">
-                  <div class="item active">
-                    <div class="row">
-                      
-                      
-                      
-                      <div class="col-sm-3">
-                        <div class="thumb-wrapper">
-                          <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-                          <div class="img-box">
-                            <img src="contato/images/img-01.png" class="img-responsive" alt="">									
-                          </div>
-                          <div class="thumb-content">
-                            <h5>Apple iPad</h5>			
-                            <a href="#" class="btn btn-primary">Adicionar</a>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      
-                      
+		
+				
+                      <div id="produtos-employee"></div>
                       
                       
                       
@@ -376,7 +360,7 @@ https://templatemo.com/tm-579-cyborg-gaming
           
           
           
-          
+          <div id="produtos-employee"></div>
           
           
           
@@ -385,7 +369,7 @@ https://templatemo.com/tm-579-cyborg-gaming
     </div>
   </div>
   
-  
+  <div id="produtos-employee"></div>
   
   <footer>
     <div class="container">
@@ -414,7 +398,61 @@ https://templatemo.com/tm-579-cyborg-gaming
 
   </body>
 
+  
+  
+  
+  
+  <script>
+    async function carregarEmployees() {
+      const apiUrl = 'https://localhost:7127/Employee'; // Altere a URL da API conforme necessário
+  
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error('Erro ao buscar employee da API');
+        }
+  
+        const employees = await response.json();
+  
+        const employeesContainer = document.getElementById('employees-container');
+  
+        employee.forEach(employee => {
+        const employeeDiv = document.createElement('div');
+        employeeDiv.classList.add('employee'); // Adicione a classe 'produto' à div
+  
+        // Cria uma tag de imagem e define o src com a imagem em base64
+        const imagemElement = document.createElement('img');
+        imagemElement.classList.add('pimg'); // Adicione a classe 'pimg' à imagem
+        imagemElement.src = `data:image/jpeg;base64,${employee.img}`;
+        
+        const nomeEmployee = document.createElement('h2');
+        nomeEmployee.classList.add('pnome'); // Adicione a classe 'pnome' ao título
+        nomeEmployee.textContent = employee.nome;
+  
+  
+        employeeDiv.appendChild(imagemElement);
+        employeeDiv.appendChild(nomeEmployee);
+  
+        employeesContainer.appendChild(employeeDiv);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  
+    carregarEmployees();
+  </script>
+  
+  
+  
+  
+  
 </html>
+
+
+
+
+
 
 
 
