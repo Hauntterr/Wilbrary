@@ -1787,15 +1787,3 @@ body {
 .dropdown:hover .dropbtn {
   background-color: #d33974;
 }
-
-
-
-.thl, .tdl {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.thl {
-  background-color: #f2f2f2;
-}
